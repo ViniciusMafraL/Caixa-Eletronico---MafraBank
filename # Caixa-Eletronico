@@ -1,0 +1,128 @@
+# Caixa-Eletronico--MafraBank
+@author By Vinicius Mafra.  
+-"Trabalho de faculdade (Analise desenvolvimento de Sistemas - Facens /SP )
+
+-JAVA Project
+
+
+package caixaeletronico;
+import java.util.Scanner;
+public class CaixaEletronico {
+//@author By Vinicius Mafra
+    public static void main(String[] args) {
+        
+for(;;){
+System.out.println("Olá, seja Bem-vindo ao Mafra Bank");
+
+Scanner entrada = new Scanner(System.in);
+
+String CPF; 
+String conta;
+String banco;
+
+    do {
+      System.out.println("Digite seu CPF:");
+      CPF = entrada.nextLine();
+      if (CPF.equals("123.456.789-00")){
+      System.out.println("CPF Válido");
+    } else {
+      System.out.println("CPF Inválido.");
+    }
+} while (!CPF.equals("123.456.789-00"));
+
+    String Senha;
+    int i;
+    for(i = 0; i < 3; i++){
+      System.out.println("Digite sua Senha");
+      Senha = entrada.nextLine();
+      if(Senha.equals("01020304")){
+        break;
+      } else if(i == 2) {
+        System.out.println("Conta Bloqueada!");
+        System.exit(0);
+    }
+}
+
+    int opt;
+    int Saldo = 100;
+    int valordep;
+    int valorsaque;
+    String agencia;
+    int valortrans;
+
+    for(;;){
+    System.out.println("Escolha a transação: ");
+    System.out.println("Saldo [1] ");
+    System.out.println("Depósito [2] ");
+    System.out.println("Saque [3] ");
+    System.out.println("Transferência [4] ");
+    System.out.println("Sair [0]");
+    opt = entrada.nextInt();
+    do {
+      if(opt != 1 && opt != 2 && opt != 3 && opt != 4 && opt != 0){
+      System.out.println("Digite novamente a opção:");
+      opt = entrada.nextInt();
+      }
+    } while (opt != 1 && opt != 2 && opt != 3 && opt != 4 && opt != 0);
+
+    switch(opt){
+      case 1:
+      System.out.println("Saldo: R$ " + Saldo + ",00");
+      break;
+
+      case 2:
+      System.out.println("Insira valor a depositar:");
+      valordep = entrada.nextInt();
+      Saldo = valordep + Saldo;
+      System.out.println("Novo Saldo: R$ " + Saldo + ",00");
+      break;
+
+      case 3:
+      System.out.println("Quantidade à Sacar:");
+      valorsaque = entrada.nextInt();
+      Saldo = Saldo - valorsaque;
+      System.out.println("Novo Saldo: R$ " + Saldo + ",00");
+      break;
+
+      case 4:
+      do {
+      System.out.println("Banco à ser transferido:");
+      banco = entrada.nextLine();
+      banco = entrada.nextLine();
+
+      System.out.println("Agência:");
+      agencia = entrada.nextLine();
+
+      System.out.println("Conta e Dígito com Hífen:");
+      conta = entrada.nextLine();
+
+      if(banco.equals("Banco Bitau") && agencia.equals("2370-3") && conta.equals("85682-8")){
+        System.out.println("Informações Corretas");
+      } else {
+        System.out.println("Informações Incorretas. Digite Novamente");
+      }
+      } while (!banco.equals("Banco Bitau") || !agencia.equals("2370-3") || !conta.equals("85682-8"));
+      System.out.println("Valor a ser transferido:");
+      valortrans = entrada.nextInt();
+      Saldo = Saldo - valortrans;
+      System.out.println("Agora seu saldo é: R$" + Saldo + ",00");
+
+      case 0:
+      System.out.println("Tudo Bem!");
+    }
+
+      int again;
+      System.out.println("Deseja realizar mais transações?");
+      System.out.println("Digite [1] para Não e [2] para Sim");
+      again = entrada.nextInt();
+
+      if(again == 1){
+        System.out.println("Banco Mafra Agradece !");
+        System.out.println("Volte Sempre!");
+        System.out.println("");
+        break;
+      }
+    }
+    }
+}
+}

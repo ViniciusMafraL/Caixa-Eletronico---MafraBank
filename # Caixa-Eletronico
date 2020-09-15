@@ -19,7 +19,7 @@ Scanner entrada = new Scanner(System.in);
 String CPF; 
 String conta;
 String banco;
-
+int quantit;
     do {
       System.out.println("Digite seu CPF:");
       CPF = entrada.nextLine();
